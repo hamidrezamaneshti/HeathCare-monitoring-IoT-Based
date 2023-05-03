@@ -5,7 +5,7 @@ import csv
 
 # Configure the database
 config = {
-    "apiKey": "******",
+    "apiKey": "*****",
     "authDomain": "******",
     "databaseURL": "https://ecgfirebaseproject-673ed.firebaseio.com/",
     "storageBucket": "ecgfirebaseproject-673ed.appspot.com"
