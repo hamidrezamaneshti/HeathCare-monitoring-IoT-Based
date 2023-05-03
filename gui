@@ -1,1 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECG Monitoring</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
+        .container {
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 6px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+	  #heart-status {
+            color: green;
+            font-weight: bold;
+        }	
+		
+
+        #ecg-plot {
+            width: 100%;
+            height: 200px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>ECG Monitoring</h2>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+      
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="sex">Sex:</label>
+        <select id="sex" name="sex" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+	 <label for="heart-rate">Heart Rate:</label>
+        <span id="heart-rate">--</span> bpm	
+        <label for="heart-status">Heart Status:</label>
+        <span id="heart-status">Normal</span>
+	  </br>
+        <label for="ecg-plot">ECG Plot:</label>
+        <canvas id="ecg-plot"></canvas>
+            <!-- ECG plot will be displayed here -->
+        </div>
+    </div>
+</body>
+<script>
+        function getRandomHeartRate(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function updateHeartRate() {
+            const heartRate = getRandomHeartRate(80, 90);
+            document.getElementById('heart-rate').innerText = heartRate;
+        }
+
+        updateHeartRate();
+        setInterval(updateHeartRate, 5000);
+
+
+
+
+    const ecgData = Array(50).fill(0); // Initialize an array with 50 zeros
+    const ctx = document.getElementById('ecg-plot').getContext('2d');
+    const chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: Array.from({ length: 50 }, (_, i) => i + 1),
+            datasets: [{
+                label: 'ECG',
+                data: ecgData,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1,
+                fill: false
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: -2,
+                    max: 2
+                }
+            }
+        }
+    });
+
+    // Simulate ECG data updates
+    setInterval(() => {
+        ecgData.shift(); // Remove the first element
+        ecgData.push(Math.random() * 4 - 2); // Add a new random value between -2 and 2
+        chart.update(); // Update the chart
+    }, 1000); // Update every 1000ms (1 second)
+</script>
+
+
+
+
+
+</html>
