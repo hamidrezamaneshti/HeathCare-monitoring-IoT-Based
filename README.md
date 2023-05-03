@@ -75,3 +75,12 @@ Regarding heart monitoring, the device obtains patient data and conducts real-ti
 ![](https://s8.uupload.ir/files/picture6_192o.jpg)
 
 
+# GUI
+
+The gui.html file provides a basic demonstration of ECG monitoring using FLASK to retrieve data from a real-time database (Firebase) and display it for the purpose of monitoring a patient's heart rate. The picture below displays the graphical user interface (GUI).
+
+![](https://s8.uupload.ir/files/ecg-monitoring_v8k9.gif)
+
+
+
+
