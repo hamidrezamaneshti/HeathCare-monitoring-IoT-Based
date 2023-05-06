@@ -1,6 +1,6 @@
 # Low-cost medical health-care monitoring system IoT-based using fog computing
 
-This project constitutes a component of the implementation of my thesis. Initially, I provide an overview of the project in the introduction section and proceed to discuss the Python codes utilized therein.
+This project constitutes a component of the implementation of my thesis. Initially, I provide an overview of the project in the introduction section and proceed to discuss the Python codes utilized therein. For more information you could read this article `https://arxiv.org/abs/2302.14131`.
 
 ## **Introduction**
 
